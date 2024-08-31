@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className='bg-gray-400 h-screen flex justify-center items-center '>
-        <div className='bg-white p-12 w-[350px] shadow-lg rounded-lg '>
+        <div className='bg-white px-8 py-6 w-[350px] shadow-lg rounded-lg '>
           <form >
        <div className='flex flex-col gap-2'>
  
@@ -52,6 +52,49 @@ function App() {
 
  </div>
 
+ <div className='flex flex-col gap-2'>
+ 
+ <label className='text-lg font-bold' >Password</label>
+ <input 
+ name="password"
+ type="password"
+ placeholder=" ********"
+ className="border-gray-400 p-2"
+  />
+{/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
+
+ </div>
+
+
+ <div className='flex flex-col gap-2'>
+ 
+ <label className='text-lg font-bold' >username</label>
+ <input 
+ name="username"
+ type="text"
+ placeholder="enter username here "
+ className="border-gray-400 p-2"
+  />
+{/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
+
+ </div>
+
+ <div className='flex flex-col gap-1'>
+ 
+ <label className='text-lg font-bold' >Mobile No</label>
+ <input 
+ name="username"
+ type="number"
+ placeholder="8976542236 "
+ className="border-gray-400 p-2"
+  />
+{/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
+
+ </div>
+  
+  <br />
+
+ <button className=' border-0 bg-indigo-600 w-full gap-4 px-0 text-white'>Submit</button>
 
           </form>
 
