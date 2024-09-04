@@ -14,6 +14,35 @@ function App() {
  
   }
 
+  const errModel={
+    firstname:null,
+    lastname:null,
+    email:null,
+    password:null,
+    username:null,
+    mobile:null
+  
+   }
+
+  const validator=(key,value)=>{
+    if(!value.length)
+    {
+
+     setFormError({
+       ...formError,
+      [key] :  ` ${key} is required field`
+     })
+    }
+     
+    else{
+      setFormError({
+        ...formError,
+       [key] : null
+      })
+    }
+
+   }
+
   const getFormValue=(e)=>{
     
     const input= e.target
@@ -23,22 +52,35 @@ function App() {
     setForm({
       ...form,
     [key]: value
-
     })  
+
+    // validator 
+    validator(key , value)
 
   }
 
   const signUp = (e) =>{
      e.preventDefault()
-     console.log(form);  
+    //  console.log(form);  
+    const keys = Object.keys(form);
+    // console.log(key);
+
+    for(let key of keys){
+  
+      // console.log(key);
+    let value= form[key]
+    // console.log(value)  
+    validator(key,value);    
 
   }
+}
 
   const [form, setForm] = useState(model);
+   const[formError,setFormError]= useState(errModel)
 
   return (
     <>
-      <div className='bg-gray-100 h-screen flex justify-center items-center '>
+      <div className='bg-gray-100 min-h-screen flex justify-center items-center '>
         {/* <h1>{JSON.stringify(form)}</h1> */}
         <div className='bg-white px-8 py-6 w-[350px] shadow-lg rounded-lg '>
           <h1 className='text-2xl font-bold  px-3 mb-4 text-center'>Rohit Sign Up Form</h1>
@@ -54,7 +96,9 @@ function App() {
        className="border-gray-400 p-2"
       onChange={getFormValue}
         />
-    {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
+
+        {formError.firstname && <small className='text-rose-600 text-semibold text-sm'>{formError.firstname} </small> }
+        
 
        </div>
 
@@ -71,6 +115,8 @@ function App() {
  onChange={getFormValue}
 
   />
+   {formError.lastname && <small className='text-rose-600 text-semibold text-sm'>{formError.lastname} </small> }
+
 {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
 
  </div>
@@ -86,6 +132,8 @@ function App() {
    onChange={getFormValue}
 
   />
+          {formError.email && <small className='text-rose-600 text-semibold text-sm'>{formError.email} </small> }
+
 {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
 
  </div>
@@ -101,6 +149,8 @@ function App() {
       onChange={getFormValue}
 
   />
+ {formError.password && <small className='text-rose-600 text-semibold text-sm'>{formError.password} </small> }
+
 {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
 
  </div>
@@ -117,6 +167,8 @@ function App() {
      onChange={getFormValue}
 
   />
+ {formError.username  && <small className='text-rose-600 text-semibold text-sm'>{formError.username} </small> }
+
 {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
 
  </div>
@@ -132,6 +184,8 @@ function App() {
      onChange={getFormValue}
 
   />
+ {formError.mobile && <small className='text-rose-600 text-semibold text-sm'>{formError.mobile} </small> }
+
 {/* <small className='text-rose-600 text-semibold text-sm'>This field is required </small> */}
 
  </div>
